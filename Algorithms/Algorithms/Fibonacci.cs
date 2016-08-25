@@ -8,6 +8,21 @@ namespace Algorithms
 {
     class Fibonacci
     {
+        private int[] sequenceFromDynamic;
+        
+        public Fibonacci(int input)
+        {
+            sequenceFromDynamic = new int[input + 2];
+
+            sequenceFromDynamic[0] = 0;
+            sequenceFromDynamic[1] = 1;
+        }
+        
+
+        public int[] SequenceFromDynamic
+        {
+            get { return sequenceFromDynamic; }
+        }
 
         public int Recursion(int counter)
         {
@@ -18,23 +33,23 @@ namespace Algorithms
         }
 
         public int DynamicPrograming(int counter)
+            //this takes up more space because it is storing all the values of the seq in an array
+            //since zero is allways the first number in the array I use the f[0] space to store the actual answer
+            //this is so I can return all the seq as an array and the answer to the problem.
         {
-            int[] f = new int[counter + 2];
-            f[0] = 0;
-            f[1] = 1;
 
             if (counter == 0)
-                return f[0];
+                return sequenceFromDynamic[0];
 
             if (counter == 1)
-                return f[1];
+                return sequenceFromDynamic[1];
 
-            if (f[counter] == 0)
-                f[counter] = DynamicPrograming(counter - 1) + DynamicPrograming(counter - 2);
+            if (sequenceFromDynamic[counter] == 0)
+                sequenceFromDynamic[counter] = DynamicPrograming(counter - 1) + DynamicPrograming(counter - 2);
             else
-                return f[counter];
-
-            return f[counter];//	only used the last time in the recursion	
+                return sequenceFromDynamic[counter];
+            
+            return sequenceFromDynamic[counter];
         }
     }
 }
