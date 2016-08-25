@@ -23,6 +23,7 @@ namespace Algorithms
         static void RunFibonacci()
         {
             int inputFib = getFibStartNumber();
+
             Fibonacci fib = new Fibonacci(inputFib);
 
             //stop watch used to check time comparison for two differnt approaches
@@ -41,11 +42,13 @@ namespace Algorithms
             watch.Stop();
             elapsedMs = watch.ElapsedMilliseconds;
             Console.WriteLine("Dynamic Programming: \t\t" + test + "\tTime spent to perform in milliseconds:\t" + watch.Elapsed.TotalMilliseconds);
+
+            //used string builder to turn int array into string and saved space
             var builder = new StringBuilder();
-            Array.ForEach(fib.SequenceFromDynamic, x => builder.Append(x));
+            Array.ForEach(fib.SequenceFromDynamic, x => builder.Append(x + ","));
             var res = builder.ToString();
 
-            Console.Write(fib.SequenceFromDynamic[4].ToString());
+            Console.Write(res + "\n");
             Console.ReadKey();
         }
 

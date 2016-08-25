@@ -10,10 +10,13 @@ namespace Algorithms
     {
         private int[] sequenceFromDynamic;
         
+        //if you dont use this constructor then the dynamic method will not work because the array is not initialized
         public Fibonacci(int input)
         {
-            sequenceFromDynamic = new int[input + 2];
+            sequenceFromDynamic = new int[input + 1];
 
+            //used for storing all the values in the results of the fib seq
+            //I set the first two numbers because they will allways be the same.
             sequenceFromDynamic[0] = 0;
             sequenceFromDynamic[1] = 1;
         }
@@ -34,8 +37,6 @@ namespace Algorithms
 
         public int DynamicPrograming(int counter)
             //this takes up more space because it is storing all the values of the seq in an array
-            //since zero is allways the first number in the array I use the f[0] space to store the actual answer
-            //this is so I can return all the seq as an array and the answer to the problem.
         {
 
             if (counter == 0)
